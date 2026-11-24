@@ -44,6 +44,7 @@ if (isBenchmarkEnabled()) {
 const menuTemplate = require('./app/menu-template');
 const { openCollection } = require('./app/collections');
 const registerNetworkIpc = require('./ipc/network');
+const registerKeychainIpc = require('./ipc/keychain');
 const registerCollectionsIpc = require('./ipc/collection');
 const { registerCollectionSearchIpc } = require('./ipc/collection-search');
 const { registerYmlMigrationIpc } = require('./ipc/yml-migration');
@@ -551,6 +552,7 @@ app.on('ready', async () => {
 
   // register all ipc handlers
   registerNetworkIpc(mainWindow);
+  registerKeychainIpc();
   registerGlobalEnvironmentsIpc(mainWindow, globalEnvironmentsManager);
   registerCollectionsIpc(mainWindow, collectionWatcher);
   registerYmlMigrationIpc(mainWindow, collectionWatcher);
